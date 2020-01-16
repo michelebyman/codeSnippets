@@ -8,7 +8,7 @@ router.use(function timelog(req, res, next) {
   next();
 });
 
-// routes for students
+// routes for snippets
 router.get("/snippets", snippet.get);
 router.get("/snippets/:id", snippet.getById);
 router.post("/snippets", snippet.post);

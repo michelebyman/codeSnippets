@@ -1,3 +1,5 @@
+const Snippet = require("../models/snippets.js");
+
 get = (req, res, next) => {
   var query;
   console.log(req.query.name);
@@ -18,7 +20,7 @@ get = (req, res, next) => {
 };
 
 getById = (req, res, next) => {
-  req.models.Snippet.findById(req.params.id)
+  Snippet.findById(req.params.id)
     .then(snippet => {
       return res.send(snippet);
     })
@@ -26,38 +28,31 @@ getById = (req, res, next) => {
 };
 
 post = (req, res, next) => {
-  req.models.Snippet.create({
-    snippet: {
-      address: {
-        street: req.body.snippet.address.street,
-        zipCode: req.body.snippet.address.zipCode,
-        city: req.body.snippet.address.city
-      },
-      email: req.body.snippet.email,
-      name: req.body.snippet.name
-    }
+  Snippet.create({
+    snippet: req.body.snippet,
+    title: req.body.snippet.title,
+    codeType: req.body.snippet.codeType,
+    className: req.body.snippet.className,
+    content: req.body.snippet.content
   })
     .then(snippet => {
-      console.log(snippet);
+      console.log(Snippet);
       return res.status(201).send(snippet);
     })
     .catch(error => next(error));
 };
 
 put = (req, res, next) => {
-  req.models.Snippet.updateOne(
+  Snippet.updateOne(
     {
       _id: req.params.id
     },
     {
       snippet: {
-        address: {
-          street: req.body.snippet.address.street,
-          zipCode: req.body.snippet.address.zipCode,
-          city: req.body.snippet.address.city
-        },
-        email: req.body.snippet.email,
-        name: req.body.snippet.name
+        title: req.body.snippet.title,
+        codeType: req.body.snippet.codeType,
+        className: req.body.snippet.className,
+        content: req.body.snippet.content
       }
     },
     {
@@ -77,7 +72,7 @@ put = (req, res, next) => {
 };
 
 deleteById = (req, res, next) => {
-  req.models.Snippet.findByIdAndDelete(req.params.id)
+  Snippet.findByIdAndDelete(req.params.id)
     .then(deleted => {
       if (deleted) return res.send(deleted).status(200);
       res.sendStatus(204);

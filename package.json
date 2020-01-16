@@ -1,27 +1,28 @@
 {
-  "name": "studentsbackend",
+  "name": "snippetsBackend",
   "version": "1.0.0",
-  "description": "Assignment in Api:er mot backend EVXFEH 18",
+  "description": "Code snippets",
   "main": "index.js",
   "scripts": {
+    "nodemon": "nodemon index.js",
     "start": "node index.js",
-    "dev": "./node_modules/nodemon/bin/nodemon.js index.js",
+    "dev": "index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/michelebyman/studentsBackend.git"
+    "url": "git+https://github.com/michelebyman/codeSnippets.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/michelebyman/studentsBackend/issues"
+    "url": "https://github.com/michelebyman/codeSnippets/issues"
   },
-  "homepage": "https://github.com/michelebyman/studentsBackend#readme",
+  "homepage": "https://github.com/michelebyman/codeSnippets#readme",
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "mongoose": "^5.5.11",
-    "nodemon": "^1.19.1"
+    "nodemon": "^1.19.4"
   }
 }

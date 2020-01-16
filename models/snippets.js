@@ -9,6 +9,6 @@ const snippetSchema = new mongoose.Schema({
   }
 });
 
-const Student = mongoose.model("Snippet", snippetSchema);
+const Snippet = mongoose.model("Snippet", snippetSchema);
 
 module.exports = Snippet;
